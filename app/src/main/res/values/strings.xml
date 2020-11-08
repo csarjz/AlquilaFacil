@@ -1,0 +1,19 @@
+<resources>
+    <string name="token">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MDM2ODUyMDcsImRhdGEiOnsiaWQiOiIyIiwiaWRyb2wiOiIzIn19.nqGyBRCit3UvVunuAHCTQ1SDQpiSvleHvyuPnBYfNy4</string>
+
+    <string name="app_name">Alquila Fácil</string>
+    <string name="login">INICIAR SESIÓN</string>
+    <string name="registrate">REGISTRATE</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="title_activity_login">Inicia Sesión o Registrate</string>
+    <string name="title_activity_register">Registrate</string>
+    <string name="title_home">INICIO</string>
+    <string name="title_publicar">PUBLICAR</string>
+    <string name="title_anuncios">MIS ANUNCIOS</string>
+    <string name="names">Nombres</string>
+    <string name="lastnames">Apellidos</string>
+    <string name="phone">Número de Celular</string>
+    <string name="register">Registrar</string>
+    <string name="save">Guardar</string>
+</resources>
