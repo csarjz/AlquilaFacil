@@ -27,6 +27,8 @@ fun AnuncioResponse.toDomain() = Anuncio(
     idpersona = idpersona ?: 0,
     images = images ?: ArrayList(),
     categoryName = categoryName ?: "",
+    nombrePersona = nombrePersona ?: "",
+    telefonoPersona = telefonoPersona ?: "",
     person = person?.toDomain(),
     comments = comments?.map { it.toDomain() } ?: ArrayList()
 )

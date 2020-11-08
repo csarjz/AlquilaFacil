@@ -19,8 +19,7 @@
             app:layout_constraintDimensionRatio="H,1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/depa" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/precioAnuncio"
@@ -29,6 +28,7 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@color/primaryText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imagenAnuncio" />
 
@@ -42,6 +42,16 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/precioAnuncio" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detalleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tituloAnuncio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

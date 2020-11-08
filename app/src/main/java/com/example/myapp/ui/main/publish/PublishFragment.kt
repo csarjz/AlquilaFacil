@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myapp.R
+import com.example.myapp.ui.publish.PublishActivity
 import kotlinx.android.synthetic.main.fragment_publish.*
 
 class PublishFragment : Fragment() {

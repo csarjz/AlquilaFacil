@@ -5,7 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp.R
+import com.example.myapp.data.apirestclient.APIUrl
 import com.example.myapp.domain.model.Anuncio
+import com.example.myapp.util.loadImage
+import com.example.myapp.util.numberFormat
+import kotlinx.android.synthetic.main.activity_anuncio.*
 import kotlinx.android.synthetic.main.mis_anuncios_item.view.*
 
 class MisAnunciosAdapter(
@@ -24,7 +28,8 @@ class MisAnunciosAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val anuncio = this.listAnuncios[position]
-        holder.itemView.precioAnuncio.text = "S/ ${anuncio.precio}"
+        holder.itemView.imagenAnuncio.loadImage(APIUrl.IMAGE_ANUNCIO_URL +anuncio.idanuncio+".jpg")
+        holder.itemView.precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
         holder.itemView.tituloAnuncio.text = anuncio.titulo
         holder.itemView.setOnClickListener {listener.onItemClickListener(anuncio, holder.itemView)}
     }

@@ -20,6 +20,8 @@ data class Anuncio (
     var idpersona: Int = 0,
     var images: List<String> = ArrayList(),
     var categoryName: String = String(),
+    var nombrePersona: String = String(),
+    var telefonoPersona: String = String(),
     var person: Person? = null,
     var comments: List<Comment> = ArrayList()
 )

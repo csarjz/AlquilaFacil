@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.publish.PublishActivity">
+    tools:context=".ui.publish.PublishActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,21 +68,23 @@
             android:padding="@dimen/space_edt"/>
 
         <TextView
+            android:id="@+id/amobladoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Amoblado"
             android:layout_marginTop="@dimen/space_edt"
             android:paddingBottom="@dimen/space_tv_with_edt"/>
         <RadioGroup
+            android:id="@+id/amobladoRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <RadioButton android:id="@+id/amueblado_si"
+            <RadioButton android:id="@+id/amoblado_si"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:text="Si"/>
-            <RadioButton android:id="@+id/amueblado_no"
+            <RadioButton android:id="@+id/amoblado_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -90,6 +92,7 @@
         </RadioGroup>
 
         <TextView
+            android:id="@+id/habitacionesTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Número de habitaciones"
@@ -105,6 +108,7 @@
             android:padding="@dimen/space_edt"/>
 
         <TextView
+            android:id="@+id/baniosTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Número de baños"

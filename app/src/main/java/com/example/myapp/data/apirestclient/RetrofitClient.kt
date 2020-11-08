@@ -1,7 +1,7 @@
 package com.example.myapp.data.apirestclient
 
 import android.content.Context
-import com.example.myapp.BuildConfig
+import com.example.myapp.data.apirestclient.APIUrl.BASE_URL
 import com.example.myapp.util.Token
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -11,11 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-
-    private val BASE_URL: String = when (BuildConfig.DEBUG) {
-        true -> "http://192.168.0.30/unprg/api/v1/"
-        false -> "http://192.168.0.30/unprg/api/v1/"
-    }
 
     fun getAPIService(context: Context) : APIService {
         val logging = HttpLoggingInterceptor()

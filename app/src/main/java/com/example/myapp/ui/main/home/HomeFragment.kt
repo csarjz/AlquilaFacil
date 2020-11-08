@@ -1,5 +1,6 @@
 package com.example.myapp.ui.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.myapp.R
 import com.example.myapp.data.request.anuncio.AnuncioFilterRequest
 import com.example.myapp.data.usecase.AnuncioUseCase
 import com.example.myapp.domain.model.Anuncio
+import com.example.myapp.ui.anuncio.AnuncioActivity
 import com.example.myapp.util.ResponseType
 import com.example.myapp.util.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -66,6 +68,8 @@ class HomeFragment : Fragment(), AnuncioListAdapter.MyViewHolder.OnAdapterListen
     }
 
     override fun onItemClickListener(anuncio: Anuncio, view: View) {
-        Toast.makeText(requireContext(), anuncio.idanuncio.toString(), Toast.LENGTH_SHORT).show()
+        startActivity(Intent(requireContext(), AnuncioActivity::class.java).apply {
+            putExtra("idanuncio", anuncio.idanuncio)
+        })
     }
 }

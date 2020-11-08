@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerAnuncio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.anuncio.AnuncioActivity"
+    android:visibility="invisible">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imagenAnuncio"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/divider"
+                app:layout_constraintDimensionRatio="H,16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/precioAnuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imagenAnuncio" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tituloAnuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/precioAnuncio" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/detalleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tituloAnuncio" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detalleTextView"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="32dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryText"
+                android:text="Detalles"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detalleTextView" />
+
+            <TableLayout
+                android:id="@+id/table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textDetalle">
+
+                <TableRow>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:padding="4dp"
+                        android:text="TIPO"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tipo"
+                        android:padding="4dp"/>
+                </TableRow>
+                <TableRow>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:padding="4dp"
+                        android:text="ÁREA"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/area"
+                        android:padding="4dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/rowHabitaciones">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:padding="4dp"
+                        android:paddingEnd="24dp"
+                        android:text="HABITACIONES"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/numHabitaciones"
+                        android:padding="4dp"/>
+                </TableRow>
+                <TableRow>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:padding="4dp"
+                        android:paddingEnd="24dp"
+                        android:text="BAÑOS"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/numBanios"
+                        android:padding="4dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/rowAmoblado">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:padding="4dp"
+                        android:text="AMOBLADO"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/amoblado"
+                        android:padding="4dp"/>
+                </TableRow>
+            </TableLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/table"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="28dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryText"
+                android:text="Descripción"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/table" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textDescripcion" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/descripcion"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ubicadoEn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="28dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryText"
+                android:text="Ubicado en"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/descripcion" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ubicadoEn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnChat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CHAT"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/background_accent_rounded"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLlamar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LLAMAR"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/background_accent_rounded"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

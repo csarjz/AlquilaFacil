@@ -1,12 +1,13 @@
-package com.example.myapp.ui.main.publish
+package com.example.myapp.ui.publish
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.myapp.R
 import com.example.myapp.data.usecase.AnuncioUseCase
 import com.example.myapp.domain.model.Anuncio
-import com.example.myapp.util.ResponseType
+import com.example.myapp.util.*
 import kotlinx.android.synthetic.main.activity_publish.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -27,7 +28,26 @@ class PublishActivity : AppCompatActivity() {
             finish()
             return
         }
+        when (idcategoria) {
+            CASA -> supportActionBar?.title = "Publicar Casa"
+            DEPARTAMENTO -> supportActionBar?.title = "Publicar Departamento"
+            HABITACION -> supportActionBar?.title = "Publicar Habitación"
+            OFICINA -> supportActionBar?.title = "Publicar Oficina"
+        }
+        setupView()
+    }
+
+    private fun setupView() {
         btn_publicar.setOnClickListener{ publicar() }
+
+        if (idcategoria == OFICINA) {
+            amobladoTextView.visibility = View.GONE
+            amobladoRadioGroup.visibility = View.GONE
+            habitacionesTextView.visibility = View.GONE
+            habitaciones_edt.visibility = View.GONE
+            baniosTextView.visibility = View.GONE
+            banios_edt.visibility = View.GONE
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -55,7 +75,7 @@ class PublishActivity : AppCompatActivity() {
                 titulo = titulo_edt.text.toString(),
                 descripcion = descripcion_edt.text.toString(),
                 telefono = telefono_edt.text.toString(),
-                amueblado = if(amueblado_si.isChecked) 1 else 0,
+                amueblado = if(amoblado_si.isChecked) 1 else 0,
                 habitaciones = if(habitaciones_edt.text.toString().isBlank()) 0 else habitaciones_edt.text.toString().toInt(),
                 banios = if(banios_edt.text.toString().isBlank()) 0 else banios_edt.text.toString().toInt(),
                 area = if(area_edt.text.toString().isBlank()) 0F else area_edt.text.toString().toFloat(),

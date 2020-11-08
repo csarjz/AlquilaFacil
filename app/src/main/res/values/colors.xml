@@ -4,10 +4,11 @@
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryLight">#BBDEFB</color>
     <color name="colorAccent">#002f34</color>
-    <color name="primaryText">#212121</color>
+<!--    <color name="primaryText">#212121</color>-->
+    <color name="primaryText">#5E5E5E</color>
     <color name="secondaryText">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorEditText">#E3E2E2</color>
-    <color name="divider">#959494</color>
+    <color name="divider">#D5D6DA</color>
 </resources>

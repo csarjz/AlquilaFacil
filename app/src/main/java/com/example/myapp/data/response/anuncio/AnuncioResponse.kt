@@ -24,6 +24,8 @@ data class AnuncioResponse (
     var idpersona: Int? = null,
     var images: List<String>? = null,
     var categoryName: String?,
+    var nombrePersona: String? = null,
+    var telefonoPersona: String? = null,
     var person: PersonResponse? = null,
     var comments: List<CommentResponse>? = null
 )

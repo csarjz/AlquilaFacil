@@ -30,5 +30,5 @@ interface APIService {
     suspend fun misAnuncios() : Response<List<AnuncioResponse>>
 
     @GET(APIUrl.ANUNCIO)
-    suspend fun getAnuncio(@Field("idanuncio") id: Int) : Response<AnuncioResponse>
+    suspend fun getAnuncio(@Query("idanuncio") id: Int) : Response<AnuncioResponse>
 }
