@@ -1,6 +1,7 @@
 package com.unprg.alquilafacil.domain.model
 
 import android.os.Parcelable
+import com.unprg.alquilafacil.data.response.chat.ChatResponse
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -27,5 +28,6 @@ data class Anuncio (
     var nombrePersona: String = String(),
     var telefonoPersona: String = String(),
     var person: Person? = null,
-    var comments: List<Comment> = ArrayList()
+    var comments: List<Comment> = ArrayList(),
+    var chat: Chat = Chat()
 ): Parcelable

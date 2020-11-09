@@ -3,6 +3,7 @@ package com.unprg.alquilafacil.data.mapper
 import com.unprg.alquilafacil.data.request.anuncio.AnuncioResquest
 import com.unprg.alquilafacil.data.response.anuncio.AnuncioResponse
 import com.unprg.alquilafacil.domain.model.Anuncio
+import com.unprg.alquilafacil.domain.model.Chat
 import kotlin.collections.ArrayList
 
 fun AnuncioResponse.toDomain() = Anuncio(
@@ -28,7 +29,8 @@ fun AnuncioResponse.toDomain() = Anuncio(
     nombrePersona = nombrePersona ?: "",
     telefonoPersona = telefonoPersona ?: "",
     person = person?.toDomain(),
-    comments = comments?.map { it.toDomain() } ?: ArrayList()
+    comments = comments?.map { it.toDomain() } ?: ArrayList(),
+    chat = chat?.toDomain() ?: Chat()
 )
 
 fun Anuncio.toData() = AnuncioResquest(

@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.unprg.alquilafacil.R
-import com.unprg.alquilafacil.domain.model.Chat
+import com.unprg.alquilafacil.domain.model.Message
 import kotlinx.android.synthetic.main.chat_item.view.*
 
 class ChatAdapter(
-    private var mensajes: List<Chat>, val idCurrentPerson: Int, val context: Context
+    private var mensajes: List<Message>, val idCurrentPerson: Int, val context: Context
 ) : RecyclerView.Adapter<ChatAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -38,7 +38,7 @@ class ChatAdapter(
         }
     }
 
-    fun updateList(newMenssages: List<Chat>) {
+    fun updateList(newMenssages: List<Message>) {
         this.mensajes = newMenssages
         this.notifyDataSetChanged()
     }

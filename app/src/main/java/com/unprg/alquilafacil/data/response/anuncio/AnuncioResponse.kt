@@ -1,6 +1,7 @@
 package com.unprg.alquilafacil.data.response.anuncio
 
 import androidx.annotation.Keep
+import com.unprg.alquilafacil.data.response.chat.ChatResponse
 import com.unprg.alquilafacil.data.response.persona.PersonResponse
 
 @Keep
@@ -27,5 +28,6 @@ data class AnuncioResponse (
     var nombrePersona: String? = null,
     var telefonoPersona: String? = null,
     var person: PersonResponse? = null,
-    var comments: List<CommentResponse>? = null
+    var comments: List<CommentResponse>? = null,
+    var chat: ChatResponse? = null
 )

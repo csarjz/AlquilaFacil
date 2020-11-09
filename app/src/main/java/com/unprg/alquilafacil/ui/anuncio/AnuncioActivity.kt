@@ -10,6 +10,7 @@ import com.unprg.alquilafacil.R
 import com.unprg.alquilafacil.data.apirestclient.APIUrl.BASE_IMAGE_URL
 import com.unprg.alquilafacil.data.usecase.AnuncioUseCase
 import com.unprg.alquilafacil.domain.model.Anuncio
+import com.unprg.alquilafacil.domain.model.Person
 import com.unprg.alquilafacil.ui.chat.ChatActivity
 import com.unprg.alquilafacil.util.OFICINA
 import com.unprg.alquilafacil.util.ResponseType
@@ -24,6 +25,7 @@ import kotlinx.coroutines.withContext
 class AnuncioActivity : AppCompatActivity() {
     private var idanuncio = 0
     private lateinit var anuncio: Anuncio
+    private var idCurrentPerson = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,7 @@ class AnuncioActivity : AppCompatActivity() {
             finish()
             return
         }
+        idCurrentPerson = Person.getLocal(this).idpersona
 
         callServiceListAnuncios()
     }
@@ -46,9 +49,8 @@ class AnuncioActivity : AppCompatActivity() {
 
     private fun setupView() {
         containerAnuncio.visibility = View.VISIBLE
-        if (anuncio.images.isNotEmpty()) {
-            imagenAnuncio.loadAnuncioImage(anuncio.images[0])
-        }
+        val imagenName = if(anuncio.images.isNotEmpty()) anuncio.images[0] else ""
+        imagenAnuncio.loadAnuncioImage(imagenName)
         precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
         tituloAnuncio.text = anuncio.titulo
         if (anuncio.idcategoria == OFICINA) {
@@ -66,20 +68,33 @@ class AnuncioActivity : AppCompatActivity() {
         direccion.text = anuncio.direccion
         descripcion.text = anuncio.descripcion
 
-        btnLlamar.setOnClickListener {
-            if (anuncio.telefono.isNotBlank()) {
-                startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:${anuncio.telefono}")))
-            } else if (anuncio.telefonoPersona.isNotBlank()) {
-                startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:${anuncio.telefonoPersona}")))
-            } else {
-                Toast.makeText(this, "El dueño no ha proporcionado un número de teléfono", Toast.LENGTH_SHORT).show()
+        if (anuncio.idpersona == idCurrentPerson) {
+            actionsLayout.visibility = View.GONE
+        } else {
+            btnLlamar.setOnClickListener {
+                if (anuncio.telefono.isNotBlank()) {
+                    startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:${anuncio.telefono}")))
+                } else if (anuncio.telefonoPersona.isNotBlank()) {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_DIAL,
+                            Uri.parse("tel:${anuncio.telefonoPersona}")
+                        )
+                    )
+                } else {
+                    Toast.makeText(
+                        this,
+                        "El dueño no ha proporcionado un número de teléfono",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
 
-        btnChat.setOnClickListener {
-            startActivity(Intent(this, ChatActivity::class.java).apply {
-                putExtra("anuncio", anuncio)
-            })
+            btnChat.setOnClickListener {
+                startActivity(Intent(this, ChatActivity::class.java).apply {
+                    putExtra("anuncio", anuncio)
+                })
+            }
         }
     }
 

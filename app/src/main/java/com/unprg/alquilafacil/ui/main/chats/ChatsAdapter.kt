@@ -8,11 +8,14 @@ import com.unprg.alquilafacil.R
 import com.unprg.alquilafacil.data.apirestclient.APIUrl
 import com.unprg.alquilafacil.domain.model.Anuncio
 import com.unprg.alquilafacil.util.loadAnuncioImage
+import com.unprg.alquilafacil.util.loadPersonImage
 import com.unprg.alquilafacil.util.numberFormat
+import kotlinx.android.synthetic.main.activity_anuncio.*
 import kotlinx.android.synthetic.main.mis_anuncios_item.view.*
 
 class ChatsAdapter(
     private var listAnuncios: List<Anuncio>,
+    private val idcurrentpersona: Int,
     private val listener: MyViewHolder.OnAdapterListener
 ) : RecyclerView.Adapter<ChatsAdapter.MyViewHolder>() {
 
@@ -27,11 +30,14 @@ class ChatsAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val anuncio = this.listAnuncios[position]
-        if (anuncio.images.isNotEmpty()) {
-            holder.itemView.imagenAnuncio.loadAnuncioImage(anuncio.images[0])
+        if (anuncio.idpersona == idcurrentpersona) {
+            holder.itemView.precioAnuncio.text = anuncio.chat.nombrePersona
+            holder.itemView.imagenAnuncio.loadPersonImage("${anuncio.chat.idpersona}.jpg")
+        } else {
+            holder.itemView.precioAnuncio.text = anuncio.nombrePersona
+            holder.itemView.imagenAnuncio.loadPersonImage("${anuncio.idpersona}.jpg")
         }
-        holder.itemView.precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
-        holder.itemView.tituloAnuncio.text = anuncio.titulo
+        holder.itemView.tituloAnuncio.text = anuncio.titulo+" - S/ "+ numberFormat(anuncio.precio)
         holder.itemView.setOnClickListener {listener.onItemClickListener(anuncio, holder.itemView)}
     }
 
