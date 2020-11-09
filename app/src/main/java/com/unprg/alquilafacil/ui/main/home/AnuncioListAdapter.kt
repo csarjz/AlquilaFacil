@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.anuncio_item.view.*
 import kotlinx.android.synthetic.main.anuncio_item.view.imagenAnuncio
 import kotlinx.android.synthetic.main.anuncio_item.view.precioAnuncio
 import kotlinx.android.synthetic.main.anuncio_item.view.tituloAnuncio
+import kotlinx.android.synthetic.main.mis_anuncios_item.view.*
 
 class AnuncioListAdapter(
     private var listAnuncios: List<Anuncio>,
@@ -31,7 +32,9 @@ class AnuncioListAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val anuncio = this.listAnuncios[position]
-        holder.itemView.imagenAnuncio.loadImage(APIUrl.IMAGE_ANUNCIO_URL +anuncio.idanuncio+".jpg")
+        if (anuncio.images.isNotEmpty()) {
+            holder.itemView.imagenAnuncio.loadImage(APIUrl.IMAGE_ANUNCIO_URL + anuncio.images[0])
+        }
         holder.itemView.precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
         holder.itemView.tituloAnuncio.text = anuncio.titulo
         if (anuncio.idcategoria == OFICINA) {

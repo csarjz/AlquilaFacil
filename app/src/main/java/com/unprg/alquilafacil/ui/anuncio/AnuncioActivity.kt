@@ -45,7 +45,9 @@ class AnuncioActivity : AppCompatActivity() {
 
     private fun setupView() {
         containerAnuncio.visibility = View.VISIBLE
-        imagenAnuncio.loadImage(IMAGE_ANUNCIO_URL+anuncio.idanuncio+".jpg")
+        if (anuncio.images.isNotEmpty()) {
+            imagenAnuncio.loadImage(IMAGE_ANUNCIO_URL + anuncio.images[0])
+        }
         precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
         tituloAnuncio.text = anuncio.titulo
         if (anuncio.idcategoria == OFICINA) {

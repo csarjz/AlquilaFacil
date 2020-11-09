@@ -11,6 +11,7 @@ import com.unprg.alquilafacil.util.Error
 import com.unprg.alquilafacil.util.ResponseType
 import com.google.gson.Gson
 import com.google.gson.stream.MalformedJsonException
+import okhttp3.MultipartBody
 
 class AnuncioUseCase(private val context: Context) {
 
@@ -114,6 +115,59 @@ class AnuncioUseCase(private val context: Context) {
                 ResponseType.Error(Error("Ocurrió un error inesperado"))
             }
         } catch (e: Exception) {
+            ResponseType.Error(Error("Ocurrió un error inesperado"))
+        }
+    }
+
+    suspend fun delteAnuncio(idanuncio: Int, force: Int = 0): ResponseType<String, Error> {
+        return try {
+            val response = RetrofitClient.getAPIService(context).deleteAnuncio(idanuncio, force)
+            if (response.isSuccessful) {
+                val anuncioResponse = response.body()
+                if (anuncioResponse != null) {
+                    ResponseType.Success(anuncioResponse)
+                } else {
+                    ResponseType.Error(Error("Ocurrió un error"))
+                }
+            } else {
+                ResponseType.Error(Error(response.errorBody()?.string()))
+            }
+        } catch (e: java.net.ConnectException) {
+            ResponseType.Error(Error("Asegúrate de estar conectado internet"))
+        } catch (e: MalformedJsonException) {
+            if (BuildConfig.DEBUG) {
+                ResponseType.Error(Error("Error JSON"))
+            } else {
+                ResponseType.Error(Error("Ocurrió un error inesperado"))
+            }
+        } catch (e: Exception) {
+            ResponseType.Error(Error("Ocurrió un error inesperado"))
+        }
+    }
+
+    suspend fun saveImageAnuncio(idanuncio: Int, filePart: MultipartBody.Part): ResponseType<String, Error> {
+        return try {
+            val response = RetrofitClient.getAPIService(context).saveImageAnuncio(idanuncio, filePart)
+            if (response.isSuccessful) {
+                val anuncioResponse = response.body()
+                if (anuncioResponse != null) {
+                    ResponseType.Success(anuncioResponse)
+                } else {
+                    ResponseType.Error(Error("Ocurrió un error"))
+                }
+            } else {
+                ResponseType.Error(Error(response.errorBody()?.string()))
+            }
+        } catch (e: java.net.ConnectException) {
+            ResponseType.Error(Error("Asegúrate de estar conectado internet"))
+        } catch (e: MalformedJsonException) {
+            if (BuildConfig.DEBUG) {
+                ResponseType.Error(Error("Error JSON"))
+            } else {
+                ResponseType.Error(Error("Ocurrió un error inesperado"))
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
             ResponseType.Error(Error("Ocurrió un error inesperado"))
         }
     }

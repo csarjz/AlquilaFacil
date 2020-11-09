@@ -27,7 +27,9 @@ class MisAnunciosAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val anuncio = this.listAnuncios[position]
-        holder.itemView.imagenAnuncio.loadImage(APIUrl.IMAGE_ANUNCIO_URL +anuncio.idanuncio+".jpg")
+        if (anuncio.images.isNotEmpty()) {
+            holder.itemView.imagenAnuncio.loadImage(APIUrl.IMAGE_ANUNCIO_URL + anuncio.images[0])
+        }
         holder.itemView.precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
         holder.itemView.tituloAnuncio.text = anuncio.titulo
         holder.itemView.setOnClickListener {listener.onItemClickListener(anuncio, holder.itemView)}

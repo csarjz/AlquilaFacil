@@ -5,6 +5,7 @@ import com.unprg.alquilafacil.data.request.login.LoginRequest
 import com.unprg.alquilafacil.data.request.person.PersonRequest
 import com.unprg.alquilafacil.data.response.anuncio.AnuncioResponse
 import com.unprg.alquilafacil.data.response.login.LoginResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -22,6 +23,14 @@ interface APIService {
     @POST(APIUrl.ANUNCIO)
     suspend fun saveAnuncio(@Body anuncioResquest: AnuncioResquest) : Response<AnuncioResponse>
 
+    @Multipart
+    @POST(APIUrl.ANUNCIO)
+    suspend fun saveImageAnuncio(
+        @Query("idanuncio") id: Int,
+        @Part filePart: MultipartBody.Part,
+        @Query("action") action: String = "saveimagen"
+    ) : Response<String>
+
     @GET(APIUrl.ANUNCIO)
     suspend fun listAnuncios(@Query("filtro") filtro: String) : Response<List<AnuncioResponse>>
 
@@ -30,4 +39,7 @@ interface APIService {
 
     @GET(APIUrl.ANUNCIO)
     suspend fun getAnuncio(@Query("idanuncio") id: Int) : Response<AnuncioResponse>
+
+    @GET(APIUrl.ANUNCIO)
+    suspend fun deleteAnuncio(@Query("idanuncio") idanuncio: Int, @Query("force") force: Int = 0, @Query("action") action: String = "delete") : Response<String>
 }
