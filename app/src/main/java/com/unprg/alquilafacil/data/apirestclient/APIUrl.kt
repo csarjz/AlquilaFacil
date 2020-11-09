@@ -7,9 +7,9 @@ object APIUrl {
         true -> "http://192.168.0.30/unprg/api/v1/"
         false -> "http://192.168.0.30/unprg/api/v1/"
     }
-    val IMAGE_ANUNCIO_URL: String = when (BuildConfig.DEBUG) {
-        true -> "http://192.168.0.30/unprg/api/data/images/anuncio/"
-        false -> "http://192.168.0.30/unprg/api/data/images/anuncio/"
+    val BASE_IMAGE_URL: String = when (BuildConfig.DEBUG) {
+        true -> "http://192.168.0.30/unprg/api/data/images/"
+        false -> "http://192.168.0.30/unprg/api/data/images/"
     }
     const val LOGIN = "login/"
     const val LOGOUT = "logout/"

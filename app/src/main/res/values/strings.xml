@@ -8,8 +8,9 @@
     <string name="password">Contraseña</string>
     <string name="title_activity_login">Inicia Sesión o Registrate</string>
     <string name="title_activity_register">Registrate</string>
-    <string name="title_home">INICIO</string>
+    <string name="title_home">EXPLORAR</string>
     <string name="title_publicar">PUBLICAR</string>
+    <string name="title_chat">CHATS</string>
     <string name="title_anuncios">MIS ANUNCIOS</string>
     <string name="names">Nombres</string>
     <string name="lastnames">Apellidos</string>

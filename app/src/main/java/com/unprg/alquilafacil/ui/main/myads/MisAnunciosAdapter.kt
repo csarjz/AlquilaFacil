@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.unprg.alquilafacil.R
 import com.unprg.alquilafacil.data.apirestclient.APIUrl
 import com.unprg.alquilafacil.domain.model.Anuncio
-import com.unprg.alquilafacil.util.loadImage
+import com.unprg.alquilafacil.util.loadAnuncioImage
 import com.unprg.alquilafacil.util.numberFormat
 import kotlinx.android.synthetic.main.mis_anuncios_item.view.*
 
@@ -28,7 +28,7 @@ class MisAnunciosAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val anuncio = this.listAnuncios[position]
         if (anuncio.images.isNotEmpty()) {
-            holder.itemView.imagenAnuncio.loadImage(APIUrl.IMAGE_ANUNCIO_URL + anuncio.images[0])
+            holder.itemView.imagenAnuncio.loadAnuncioImage(anuncio.images[0])
         }
         holder.itemView.precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
         holder.itemView.tituloAnuncio.text = anuncio.titulo

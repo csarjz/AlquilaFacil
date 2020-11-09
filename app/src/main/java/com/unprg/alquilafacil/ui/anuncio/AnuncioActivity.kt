@@ -7,13 +7,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.unprg.alquilafacil.R
-import com.unprg.alquilafacil.data.apirestclient.APIUrl.IMAGE_ANUNCIO_URL
+import com.unprg.alquilafacil.data.apirestclient.APIUrl.BASE_IMAGE_URL
 import com.unprg.alquilafacil.data.usecase.AnuncioUseCase
 import com.unprg.alquilafacil.domain.model.Anuncio
 import com.unprg.alquilafacil.ui.chat.ChatActivity
 import com.unprg.alquilafacil.util.OFICINA
 import com.unprg.alquilafacil.util.ResponseType
-import com.unprg.alquilafacil.util.loadImage
+import com.unprg.alquilafacil.util.loadAnuncioImage
 import com.unprg.alquilafacil.util.numberFormat
 import kotlinx.android.synthetic.main.activity_anuncio.*
 import kotlinx.coroutines.Dispatchers
@@ -47,7 +47,7 @@ class AnuncioActivity : AppCompatActivity() {
     private fun setupView() {
         containerAnuncio.visibility = View.VISIBLE
         if (anuncio.images.isNotEmpty()) {
-            imagenAnuncio.loadImage(IMAGE_ANUNCIO_URL + anuncio.images[0])
+            imagenAnuncio.loadAnuncioImage(anuncio.images[0])
         }
         precioAnuncio.text = "S/ ${numberFormat(anuncio.precio)}"
         tituloAnuncio.text = anuncio.titulo

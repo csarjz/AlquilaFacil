@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        app:showAsAction="always|withText"/>
 
     <item
         android:id="@+id/navigation_publish"
         android:icon="@drawable/ic_add_circle_black_24dp"
-        android:title="@string/title_publicar" />
+        android:title="@string/title_publicar"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_chats"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/title_chat"
+        app:showAsAction="always|withText" />
 
     <item
         android:id="@+id/navigation_myads"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_anuncios" />
+        android:title="@string/title_anuncios"
+        app:showAsAction="always|withText" />
 
 </menu>
