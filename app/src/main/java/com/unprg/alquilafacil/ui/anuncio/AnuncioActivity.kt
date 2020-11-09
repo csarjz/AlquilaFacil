@@ -10,6 +10,7 @@ import com.unprg.alquilafacil.R
 import com.unprg.alquilafacil.data.apirestclient.APIUrl.IMAGE_ANUNCIO_URL
 import com.unprg.alquilafacil.data.usecase.AnuncioUseCase
 import com.unprg.alquilafacil.domain.model.Anuncio
+import com.unprg.alquilafacil.ui.chat.ChatActivity
 import com.unprg.alquilafacil.util.OFICINA
 import com.unprg.alquilafacil.util.ResponseType
 import com.unprg.alquilafacil.util.loadImage
@@ -73,6 +74,12 @@ class AnuncioActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "El dueño no ha proporcionado un número de teléfono", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btnChat.setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java).apply {
+                putExtra("anuncio", anuncio)
+            })
         }
     }
 

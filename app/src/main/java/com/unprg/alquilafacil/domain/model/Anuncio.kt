@@ -1,5 +1,9 @@
 package com.unprg.alquilafacil.domain.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Anuncio (
     var idanuncio: Int = 0,
     var fecha: String = String(),
@@ -24,4 +28,4 @@ data class Anuncio (
     var telefonoPersona: String = String(),
     var person: Person? = null,
     var comments: List<Comment> = ArrayList()
-)
+): Parcelable

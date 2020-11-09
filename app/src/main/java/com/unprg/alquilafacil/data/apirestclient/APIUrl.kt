@@ -16,4 +16,5 @@ object APIUrl {
     const val PERSONA = "persona/"
     const val ANUNCIO = "anuncio/"
     const val MYS_ANUNCIOS = "anuncio/misanuncios.php"
+    const val CHAT = "chat/"
 }

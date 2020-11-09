@@ -1,9 +1,11 @@
 package com.unprg.alquilafacil.data.apirestclient
 
 import com.unprg.alquilafacil.data.request.anuncio.AnuncioResquest
+import com.unprg.alquilafacil.data.request.anuncio.ChatRequest
 import com.unprg.alquilafacil.data.request.login.LoginRequest
 import com.unprg.alquilafacil.data.request.person.PersonRequest
 import com.unprg.alquilafacil.data.response.anuncio.AnuncioResponse
+import com.unprg.alquilafacil.data.response.anuncio.ChatResponse
 import com.unprg.alquilafacil.data.response.login.LoginResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -42,4 +44,10 @@ interface APIService {
 
     @GET(APIUrl.ANUNCIO)
     suspend fun deleteAnuncio(@Query("idanuncio") idanuncio: Int, @Query("force") force: Int = 0, @Query("action") action: String = "delete") : Response<String>
+
+    @POST(APIUrl.CHAT)
+    suspend fun saveChat(@Body chatRequest: ChatRequest) : Response<String>
+
+    @GET(APIUrl.CHAT)
+    suspend fun listChats(@Query("idanuncio") idanuncio: Int, @Query("count") force: Int) : Response<List<ChatResponse>>
 }

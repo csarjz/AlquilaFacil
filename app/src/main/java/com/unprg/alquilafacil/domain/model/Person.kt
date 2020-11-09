@@ -1,10 +1,13 @@
 package com.unprg.alquilafacil.domain.model
 
 import android.content.Context
+import android.os.Parcelable
 import com.unprg.alquilafacil.util.MySharedPreferences
 import com.google.gson.Gson
+import kotlinx.android.parcel.Parcelize
 import java.lang.Exception
 
+@Parcelize
 class Person(
      var idpersona: Int = 0,
      var estado: Int = 0,
@@ -18,7 +21,7 @@ class Person(
      var latitud: Float = 0F,
      var longitud: Float = 0F,
      var idrol: Int = 0
-) {
+): Parcelable {
     fun fullName(): String {
         return "$nombre $apellido"
     }
